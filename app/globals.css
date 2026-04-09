@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── CSS Variables (mirrors Tailwind config for use in arbitrary CSS) ── */
+:root {
+  --bg:       #0a0a0f;
+  --surface:  #12121c;
+  --surface2: #1a1a2a;
+  --surface3: #20203a;
+  --border:   #2a2a40;
+  --border2:  #3a3a55;
+  --gold:     #c9a84c;
+  --purple:   #7c5ce8;
+  --purple2:  #9b80f0;
+  --text:     #e8e4d8;
+  --muted:    #7a7a9a;
+  --muted2:   #9a9ab8;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: #0a0a0f;
+  color: #e8e4d8;
+  font-family: var(--font-inter), sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #12121c; }
+::-webkit-scrollbar-thumb { background: #2a2a40; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3a3a55; }
+
+/* ── Selection ── */
+::selection { background: #7c5ce840; color: #e8e4d8; }
+
+/* ── Focus ring ── */
+:focus-visible {
+  outline: 2px solid #7c5ce8;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Font utilities ── */
+.font-cinzel { font-family: var(--font-cinzel), serif; }
+.font-lora   { font-family: var(--font-lora), serif; }
