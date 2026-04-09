@@ -4,20 +4,20 @@ import './globals.css'
 
 const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-inter-var',
   display: 'swap',
 })
 
 const cinzel = Cinzel({
   subsets: ['latin'],
-  variable: '--font-cinzel',
+  variable: '--font-cinzel-var',
   weight: ['400', '600', '700', '900'],
   display: 'swap',
 })
 
 const lora = Lora({
   subsets: ['latin'],
-  variable: '--font-lora',
+  variable: '--font-lora-var',
   style: ['normal', 'italic'],
   display: 'swap',
 })
@@ -40,7 +40,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${cinzel.variable} ${lora.variable}`}>
-      <body className="bg-bg text-text antialiased">
+      <body className="bg-bg text-text antialiased font-inter">
         {children}
       </body>
     </html>
