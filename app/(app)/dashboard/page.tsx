@@ -24,7 +24,7 @@ export default async function DashboardPage() {
         <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <span className="text-xl">📜</span>
-            <span className="font-cinzel text-gold font-bold text-base tracking-wide">The Archivist</span>
+            <span className="font-cinzel text-gold font-bold text-base tracking-wide">Archivist</span>
           </div>
           <div className="flex items-center gap-4">
             <span className="text-muted text-xs">{user.email}</span>

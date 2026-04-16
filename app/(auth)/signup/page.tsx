@@ -74,7 +74,7 @@ export default function SignupPage() {
       <div className="mb-8 text-center">
         <div className="text-4xl mb-3">📜</div>
         <h1 className="font-cinzel text-2xl font-bold text-gold tracking-wide">The DM Toolkit</h1>
-        <p className="text-muted text-sm mt-1">The Archivist</p>
+        <p className="text-muted text-sm mt-1">Archivist</p>
       </div>
 
       {/* Trial badge */}

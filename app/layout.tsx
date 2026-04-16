@@ -23,11 +23,11 @@ const lora = Lora({
 })
 
 export const metadata: Metadata = {
-  title: 'The Archivist — The DM Toolkit',
+  title: 'Archivist — The DM Toolkit',
   description: 'AI-powered session chronicle tool for Dungeon Masters. Transform raw session notes into beautifully organized campaign records.',
   keywords: ['DnD', 'D&D', 'Dungeon Master', 'session notes', 'campaign chronicle', 'TTRPG'],
   openGraph: {
-    title: 'The Archivist — The DM Toolkit',
+    title: 'Archivist — The DM Toolkit',
     description: 'Transform raw session notes into beautifully organized campaign records.',
     type: 'website',
   },
