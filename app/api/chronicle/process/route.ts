@@ -1,11 +1,14 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 
+// Groq free tier: 12k TPM. Prompts use ~1k tokens, response up to 4k.
+// That leaves ~7k tokens for transcript ≈ 28,000 chars. We cap at 24k to be safe.
+const MAX_TRANSCRIPT_CHARS = 24000
+
 // Parse SRT content into a readable transcript string
 function parseSRT(srt: string): string {
   const lines = srt.split('\n')
   const textLines: string[] = []
-  let skipNext = false
 
   for (const line of lines) {
     const trimmed = line.trim()
@@ -34,6 +37,19 @@ function parseSRT(srt: string): string {
   if (current) merged.push(current)
 
   return merged.join('\n')
+}
+
+// Truncate transcript to fit within token limits, cutting at a speaker boundary
+function truncateTranscript(transcript: string, maxChars: number): { text: string; truncated: boolean } {
+  if (transcript.length <= maxChars) return { text: transcript, truncated: false }
+
+  // Try to cut at a speaker boundary (start of a [Speaker N] line)
+  const cutPoint = transcript.lastIndexOf('\n[Speaker', maxChars)
+  const text = cutPoint > maxChars * 0.5
+    ? transcript.slice(0, cutPoint).trimEnd()
+    : transcript.slice(0, maxChars).trimEnd()
+
+  return { text, truncated: true }
 }
 
 export async function POST(request: Request) {
@@ -66,7 +82,8 @@ export async function POST(request: Request) {
     // Parse SRT if the raw notes look like an SRT file, otherwise use as-is
     const rawNotes = session.raw_notes as string
     const isSRT = rawNotes.includes('-->') && /\d{2}:\d{2}:\d{2},\d{3}/.test(rawNotes)
-    const transcript = isSRT ? parseSRT(rawNotes) : rawNotes
+    const fullTranscript = isSRT ? parseSRT(rawNotes) : rawNotes
+    const { text: transcript, truncated } = truncateTranscript(fullTranscript, MAX_TRANSCRIPT_CHARS)
 
     const systemPrompt = `You are Archivist, an expert chronicler for tabletop RPG campaigns. You analyze transcripts of actual play sessions — which include both in-character roleplay and out-of-character table talk — and extract only the in-game events to create structured chronicle records.
 
@@ -85,7 +102,7 @@ Campaign: ${campaign.name}
 System: ${campaign.system}
 ${campaign.setting ? `World/Setting: ${campaign.setting}` : ''}
 
-Session Transcript:
+Session Transcript:${truncated ? ' [Note: transcript was long and has been trimmed to the first portion of the session]' : ''}
 ---
 ${transcript}
 ---
@@ -186,7 +203,7 @@ Only include sections with actual content. Empty arrays are fine.`
       .update({
         title: chronicleData.title as string,
         summary: chronicleData.summary as string,
-        chronicle_data: chronicleData,
+        chronicle_data: { ...chronicleData, _truncated: truncated },
         status: 'complete',
       })
       .eq('id', sessionId)

@@ -106,6 +106,14 @@ export default async function SessionPage({
           </div>
         )}
 
+        {/* Truncation warning */}
+        {chronicle && (chronicle as ChronicleData & { _truncated?: boolean })._truncated && (
+          <div className="mb-6 bg-gold/10 border border-gold/30 rounded-toolkit px-4 py-3 text-sm text-gold flex items-start gap-2">
+            <span className="shrink-0 mt-0.5">⚠️</span>
+            <span>This session&apos;s transcript was very long — Archivist analyzed the first portion. The chronicle may not reflect events from later in the session.</span>
+          </div>
+        )}
+
         {/* Chronicle content */}
         {chronicle && (
           <div className="flex flex-col gap-8">
