@@ -160,7 +160,7 @@ function SessionRow({
             </button>
           </div>
         ) : (
-          <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+          <div className="flex items-center gap-1">
             {/* Archive toggle */}
             <button
               onClick={() => onArchive(session.id, !session.archived)}
