@@ -126,12 +126,12 @@ function SessionRow({
       <div className="flex items-center gap-2 pr-3 shrink-0">
         {/* Status badge */}
         {session.status === 'processing' && (
-          <span className="text-xs text-amber2 bg-amber/10 border border-amber/20 px-2 py-0.5 rounded-full font-cinzel">
+          <span className="text-xs text-accent2 bg-accent/10 border border-accent/20 px-2 py-0.5 rounded-full font-cinzel">
             Processing…
           </span>
         )}
         {session.status === 'complete' && (
-          <span className="text-xs text-forest2 bg-forest/10 border border-forest/20 px-2 py-0.5 rounded-full font-cinzel">
+          <span className="text-xs text-green2 bg-green/10 border border-green/20 px-2 py-0.5 rounded-full font-cinzel">
             Ready
           </span>
         )}
@@ -143,11 +143,11 @@ function SessionRow({
 
         {/* Delete confirm inline */}
         {isConfirming ? (
-          <div className="flex items-center gap-1.5 bg-crimson/10 border border-crimson/30 rounded-toolkit-sm px-3 py-1.5">
-            <span className="text-xs text-crimson2 font-cinzel mr-1">Delete?</span>
+          <div className="flex items-center gap-1.5 bg-red/10 border border-red/30 rounded-toolkit-sm px-3 py-1.5">
+            <span className="text-xs text-red2 font-cinzel mr-1">Delete?</span>
             <button
               onClick={() => onDelete(session.id)}
-              className="text-xs text-crimson2 font-cinzel font-bold hover:text-red2 transition-colors"
+              className="text-xs text-red2 font-cinzel font-bold hover:text-red2 transition-colors"
             >
               Yes
             </button>
@@ -190,7 +190,7 @@ function SessionRow({
             <button
               onClick={() => setConfirmDeleteId(session.id)}
               title="Delete session"
-              className="w-7 h-7 rounded-toolkit-sm hover:bg-crimson/10 transition-colors flex items-center justify-center text-muted hover:text-crimson2"
+              className="w-7 h-7 rounded-toolkit-sm hover:bg-red/10 transition-colors flex items-center justify-center text-muted hover:text-red2"
             >
               <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path d="M3 4h10M6 4V2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V4M5 4l.5 9h5L11 4" strokeLinecap="round" strokeLinejoin="round" />
@@ -282,7 +282,7 @@ export default function SessionsList({
         </p>
         <Link
           href={`/campaigns/${campaignId}/sessions/new`}
-          className="bg-gradient-to-r from-amber to-amber2 text-white font-cinzel font-bold text-sm px-6 py-3 rounded-toolkit-sm hover:opacity-90 transition-opacity"
+          className="bg-gradient-to-r from-purple to-purple2 text-white font-cinzel font-bold text-sm px-6 py-3 rounded-toolkit-sm hover:opacity-90 transition-opacity"
         >
           Add Your First Session
         </Link>

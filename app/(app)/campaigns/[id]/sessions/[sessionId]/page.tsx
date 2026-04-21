@@ -95,17 +95,17 @@ export default async function SessionPage({
 
         {/* Processing state */}
         {session.status === 'processing' && (
-          <div className="bg-amber/5 border border-amber/20 rounded-toolkit p-10 text-center">
-            <div className="w-10 h-10 rounded-full border-2 border-amber border-t-transparent animate-spin mx-auto mb-5" />
-            <p className="font-cinzel text-amber2 font-bold text-lg mb-1">Archivist is chronicling this session…</p>
+          <div className="bg-purple/10 border border-purple/30 rounded-toolkit p-10 text-center">
+            <div className="w-10 h-10 rounded-full border-2 border-purple border-t-transparent animate-spin mx-auto mb-5" />
+            <p className="font-cinzel text-purple2 font-bold text-lg mb-1">Archivist is chronicling this session…</p>
             <p className="text-muted text-sm font-lora">Refresh the page in a moment to see your chronicle.</p>
           </div>
         )}
 
         {/* Failed state */}
         {session.status === 'failed' && (
-          <div className="bg-crimson/5 border border-crimson/20 rounded-toolkit p-10 text-center">
-            <p className="font-cinzel text-crimson2 font-bold text-lg mb-2">Chronicle processing failed</p>
+          <div className="bg-red/10 border border-red/30 rounded-toolkit p-10 text-center">
+            <p className="font-cinzel text-red2 font-bold text-lg mb-2">Chronicle processing failed</p>
             <p className="text-muted text-sm font-lora">There was an error generating this chronicle. Please try creating the session again.</p>
           </div>
         )}

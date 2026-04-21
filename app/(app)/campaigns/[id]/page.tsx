@@ -64,7 +64,7 @@ export default async function CampaignPage({ params }: { params: Promise<{ id: s
           </div>
           <Link
             href={`/campaigns/${id}/sessions/new`}
-            className="bg-gradient-to-r from-amber to-amber2 text-white font-cinzel font-bold text-sm px-5 py-2.5 rounded-toolkit-sm hover:opacity-90 transition-opacity flex items-center gap-2 shrink-0"
+            className="bg-gradient-to-r from-purple to-purple2 text-white font-cinzel font-bold text-sm px-5 py-2.5 rounded-toolkit-sm hover:opacity-90 transition-opacity flex items-center gap-2 shrink-0"
           >
             <span>+</span> Add Session
           </Link>

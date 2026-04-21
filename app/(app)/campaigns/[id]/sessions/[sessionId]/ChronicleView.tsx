@@ -24,9 +24,9 @@ export type ChronicleData = {
 // ── Status styling ──────────────────────────────────────────────────────────
 const npcStatusStyle: Record<string, { badge: string; border: string; dot: string }> = {
   friendly: {
-    badge:  'text-forest2 bg-forest/10 border-forest/30',
-    border: 'border-l-forest2',
-    dot:    'bg-forest2',
+    badge:  'text-green2 bg-green/10 border-green/30',
+    border: 'border-l-green',
+    dot:    'bg-green',
   },
   neutral: {
     badge:  'text-muted2 bg-surface3 border-border2',
@@ -34,9 +34,9 @@ const npcStatusStyle: Record<string, { badge: string; border: string; dot: strin
     dot:    'bg-muted',
   },
   hostile: {
-    badge:  'text-crimson2 bg-crimson/10 border-crimson/30',
-    border: 'border-l-crimson2',
-    dot:    'bg-crimson2',
+    badge:  'text-red2 bg-red/10 border-red/30',
+    border: 'border-l-red',
+    dot:    'bg-red2',
   },
   unknown: {
     badge:  'text-muted2 bg-surface3 border-border',
@@ -46,17 +46,17 @@ const npcStatusStyle: Record<string, { badge: string; border: string; dot: strin
 }
 
 const questStatusStyle: Record<string, { badge: string; border: string }> = {
-  new:       { badge: 'text-amber2 bg-amber/10 border-amber/30',      border: 'border-l-amber2' },
-  active:    { badge: 'text-gold bg-gold/10 border-gold/30',           border: 'border-l-gold' },
-  completed: { badge: 'text-forest2 bg-forest/10 border-forest/30',   border: 'border-l-forest2' },
-  failed:    { badge: 'text-crimson2 bg-crimson/10 border-crimson/30', border: 'border-l-crimson2' },
+  new:       { badge: 'text-accent2 bg-accent/10 border-accent/30',  border: 'border-l-accent2' },
+  active:    { badge: 'text-gold bg-gold/10 border-gold/30',          border: 'border-l-gold' },
+  completed: { badge: 'text-green2 bg-green/10 border-green/30',      border: 'border-l-green' },
+  failed:    { badge: 'text-red2 bg-red/10 border-red/30',            border: 'border-l-red' },
 }
 
 const encounterTypeStyle: Record<string, string> = {
-  combat:      'text-crimson2 bg-crimson/10 border-crimson/20',
+  combat:      'text-red2 bg-red/10 border-red/20',
   social:      'text-blue bg-blue/10 border-blue/20',
   exploration: 'text-teal bg-teal/10 border-teal/20',
-  trap:        'text-amber2 bg-amber/10 border-amber/20',
+  trap:        'text-accent2 bg-accent/10 border-accent/20',
   puzzle:      'text-gold bg-gold/10 border-gold/20',
 }
 
@@ -107,7 +107,7 @@ export default function ChronicleView({ chronicle }: { chronicle: ChronicleData 
     <div>
       {/* Truncation warning */}
       {chronicle._truncated && (
-        <div className="mb-5 bg-amber/5 border border-amber/20 rounded-toolkit px-4 py-3 text-sm text-amber2 flex items-start gap-2.5">
+        <div className="mb-5 bg-accent/5 border border-accent/20 rounded-toolkit px-4 py-3 text-sm text-accent2 flex items-start gap-2.5">
           <span className="shrink-0 mt-0.5 text-base">⚠️</span>
           <span className="font-lora">
             This session&apos;s transcript was very long — Archivist analyzed the first portion.
@@ -280,8 +280,8 @@ export default function ChronicleView({ chronicle }: { chronicle: ChronicleData 
                       </span>
                     </div>
                     <div className="mb-3 flex items-center gap-2">
-                      <div className="w-1 h-1 rounded-full bg-forest2" />
-                      <p className="text-forest2 text-xs font-cinzel tracking-wide font-bold uppercase">{enc.outcome}</p>
+                      <div className="w-1 h-1 rounded-full bg-green" />
+                      <p className="text-green text-xs font-cinzel tracking-wide font-bold uppercase">{enc.outcome}</p>
                     </div>
                     {enc.notes && (
                       <p className="text-muted2 text-sm leading-relaxed font-lora">{enc.notes}</p>
@@ -372,7 +372,7 @@ export default function ChronicleView({ chronicle }: { chronicle: ChronicleData 
                         key={i}
                         className={`flex items-start gap-3 px-5 py-3.5 ${i < chronicle.hooks!.length - 1 ? 'border-b border-border/50' : ''}`}
                       >
-                        <span className="text-amber2 mt-0.5 shrink-0 font-cinzel text-xs">→</span>
+                        <span className="text-purple2 mt-0.5 shrink-0 font-cinzel text-xs">→</span>
                         <span className="text-muted2 text-sm font-lora leading-relaxed">{h}</span>
                       </div>
                     ))}

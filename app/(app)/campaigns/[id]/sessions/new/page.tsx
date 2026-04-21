@@ -128,7 +128,7 @@ export default function NewSessionPage({ params }: { params: Promise<{ id: strin
                   onChange={e => setSessionNumber(e.target.value)}
                   placeholder="e.g. 12"
                   min={1}
-                  className="bg-surface2 border border-border rounded-toolkit-sm px-3 py-2.5 text-sm text-text placeholder:text-muted focus:outline-none focus:border-amber focus:ring-2 focus:ring-amber/20 transition-all"
+                  className="bg-surface2 border border-border rounded-toolkit-sm px-3 py-2.5 text-sm text-text placeholder:text-muted focus:outline-none focus:border-purple focus:ring-2 focus:ring-purple/20 transition-all"
                 />
               </div>
               <div className="flex flex-col gap-1.5">
@@ -137,7 +137,7 @@ export default function NewSessionPage({ params }: { params: Promise<{ id: strin
                   type="date"
                   value={sessionDate}
                   onChange={e => setSessionDate(e.target.value)}
-                  className="bg-surface2 border border-border rounded-toolkit-sm px-3 py-2.5 text-sm text-text focus:outline-none focus:border-amber focus:ring-2 focus:ring-amber/20 transition-all"
+                  className="bg-surface2 border border-border rounded-toolkit-sm px-3 py-2.5 text-sm text-text focus:outline-none focus:border-purple focus:ring-2 focus:ring-purple/20 transition-all"
                 />
               </div>
             </div>
@@ -160,7 +160,7 @@ export default function NewSessionPage({ params }: { params: Promise<{ id: strin
                 className={`
                   w-full border-2 border-dashed rounded-toolkit p-8 text-center transition-all
                   ${srtFile
-                    ? 'border-amber/50 bg-amber/5'
+                    ? 'border-purple/50 bg-purple/5'
                     : 'border-border hover:border-border2 hover:bg-surface2'
                   }
                 `}
@@ -190,10 +190,10 @@ export default function NewSessionPage({ params }: { params: Promise<{ id: strin
           )}
 
           {isLoading && (
-            <div className="bg-amber/5 border border-amber/20 rounded-toolkit p-4 flex items-center gap-4">
-              <div className="w-8 h-8 rounded-full border-2 border-amber border-t-transparent animate-spin shrink-0" />
+            <div className="bg-purple/10 border border-purple/30 rounded-toolkit p-4 flex items-center gap-4">
+              <div className="w-8 h-8 rounded-full border-2 border-purple border-t-transparent animate-spin shrink-0" />
               <div>
-                <p className="font-cinzel text-sm font-bold text-amber2">
+                <p className="font-cinzel text-sm font-bold text-purple2">
                   {status === 'saving' ? 'Saving your transcript…' : 'Archivist is reading the transcript…'}
                 </p>
                 <p className="text-xs text-muted mt-0.5">

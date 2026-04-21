@@ -2,30 +2,27 @@
 
 /* ── DM Toolkit Design System (Tailwind v4 theme) ── */
 @theme {
-  /* Colors — Candlelit Codex palette */
-  --color-bg:       #0d0c0a;
-  --color-surface:  #151310;
-  --color-surface2: #1e1b16;
-  --color-surface3: #272318;
-  --color-border:   #302b20;
-  --color-border2:  #403c2c;
-  --color-amber:    #c07828;
-  --color-amber2:   #d89040;
-  --color-gold:     #c9a840;
-  --color-gold2:    #e0c060;
-  --color-crimson:  #9a1f1f;
-  --color-crimson2: #c02828;
-  --color-red:      #b83535;
-  --color-red2:     #d84848;
-  --color-forest:   #2d7a50;
-  --color-forest2:  #40a068;
-  --color-purple:   #5c3e9e;
-  --color-purple2:  #7c5ec8;
-  --color-blue:     #3d6ea0;
-  --color-teal:     #258888;
-  --color-text:     #ede8d5;
-  --color-muted:    #7a7262;
-  --color-muted2:   #9a9080;
+  /* Colors */
+  --color-bg:       #0a0a0f;
+  --color-surface:  #12121c;
+  --color-surface2: #1a1a2a;
+  --color-surface3: #20203a;
+  --color-border:   #2a2a40;
+  --color-border2:  #3a3a55;
+  --color-accent:   #c9872a;
+  --color-accent2:  #e8a040;
+  --color-gold:     #c9a84c;
+  --color-red:      #c94040;
+  --color-red2:     #e05555;
+  --color-purple:   #7c5ce8;
+  --color-purple2:  #9b80f0;
+  --color-green:    #3dc98a;
+  --color-green2:   #55e0a0;
+  --color-blue:     #4a90d9;
+  --color-teal:     #2abfbf;
+  --color-text:     #e8e4d8;
+  --color-muted:    #7a7a9a;
+  --color-muted2:   #9a9ab8;
 
   /* Fonts */
   --font-cinzel: var(--font-cinzel-var), serif;
@@ -33,46 +30,31 @@
   --font-lora:   var(--font-lora-var), serif;
 
   /* Border radius */
-  --radius-toolkit:    10px;
-  --radius-toolkit-sm: 6px;
+  --radius-toolkit:    12px;
+  --radius-toolkit-sm: 8px;
 }
 
 html { scroll-behavior: smooth; }
 
 body {
-  background-color: #0d0c0a;
-  color: #ede8d5;
+  background-color: #0a0a0f;
+  color: #e8e4d8;
   -webkit-font-smoothing: antialiased;
 }
 
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: #151310; }
-::-webkit-scrollbar-thumb { background: #302b20; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #403c2c; }
+::-webkit-scrollbar-track { background: #12121c; }
+::-webkit-scrollbar-thumb { background: #2a2a40; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3a3a55; }
 
 /* ── Selection ── */
-::selection { background: #c0782840; color: #ede8d5; }
+::selection { background: #7c5ce840; color: #e8e4d8; }
 
 /* ── Focus ring ── */
 :focus-visible {
-  outline: 2px solid #c07828;
+  outline: 2px solid #7c5ce8;
   outline-offset: 2px;
   border-radius: 4px;
-}
-
-/* ── Chronicle ornamental divider ── */
-.chronicle-divider {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: #403c2c;
-}
-.chronicle-divider::before,
-.chronicle-divider::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(to right, transparent, #403c2c, transparent);
 }
 
