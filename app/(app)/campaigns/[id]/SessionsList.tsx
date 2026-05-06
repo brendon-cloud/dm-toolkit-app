@@ -74,17 +74,16 @@ function SessionRow({
       ref={setNodeRef}
       style={style}
       className={`
-        group flex items-center gap-3 bg-surface border border-border rounded-toolkit
-        transition-all
+        group flex items-center gap-3 glass-card rounded-toolkit
         ${isDragging ? 'opacity-50 shadow-xl z-50 scale-[1.01]' : ''}
-        ${session.archived ? 'opacity-60' : ''}
+        ${session.archived ? 'opacity-50' : ''}
       `}
     >
       {/* Drag handle */}
       <button
         {...attributes}
         {...listeners}
-        className="pl-3 pr-1 py-5 text-border hover:text-muted2 transition-colors cursor-grab active:cursor-grabbing touch-none shrink-0"
+        className="pl-3 pr-1 py-5 text-border2 hover:text-muted transition-colors cursor-grab active:cursor-grabbing touch-none shrink-0"
         aria-label="Drag to reorder"
         tabIndex={-1}
       >
@@ -102,7 +101,7 @@ function SessionRow({
       </button>
 
       {/* Session number badge */}
-      <div className="w-9 h-9 rounded-toolkit-sm bg-surface2 border border-border flex items-center justify-center shrink-0">
+      <div className="w-9 h-9 rounded-toolkit-sm bg-surface/60 border border-border flex items-center justify-center shrink-0">
         <span className="font-cinzel text-muted text-xs font-bold">#{session.session_number}</span>
       </div>
 
@@ -115,10 +114,10 @@ function SessionRow({
           {session.title || `Session ${session.session_number}`}
         </h3>
         {session.summary && (
-          <p className="text-muted text-xs mt-0.5 truncate">{session.summary}</p>
+          <p className="text-muted text-xs mt-0.5 truncate font-lora">{session.summary}</p>
         )}
         {dateStr && !session.summary && (
-          <p className="text-muted text-xs mt-0.5">{dateStr}</p>
+          <p className="text-muted text-xs mt-0.5 font-cinzel tracking-wide">{dateStr}</p>
         )}
       </Link>
 
@@ -126,17 +125,17 @@ function SessionRow({
       <div className="flex items-center gap-2 pr-3 shrink-0">
         {/* Status badge */}
         {session.status === 'processing' && (
-          <span className="text-xs text-accent2 bg-accent/10 border border-accent/20 px-2 py-0.5 rounded-full font-cinzel">
+          <span className="text-xs text-gold bg-gold/10 border border-gold/25 px-2 py-0.5 rounded-full font-cinzel">
             Processing…
           </span>
         )}
         {session.status === 'complete' && (
-          <span className="text-xs text-green2 bg-green/10 border border-green/20 px-2 py-0.5 rounded-full font-cinzel">
+          <span className="text-xs text-green2 bg-green/10 border border-green/25 px-2 py-0.5 rounded-full font-cinzel">
             Ready
           </span>
         )}
         {session.archived && (
-          <span className="text-xs text-muted bg-surface3 border border-border px-2 py-0.5 rounded-full font-cinzel">
+          <span className="text-xs text-muted bg-surface3/60 border border-border px-2 py-0.5 rounded-full font-cinzel">
             Archived
           </span>
         )}
@@ -151,7 +150,7 @@ function SessionRow({
             >
               Yes
             </button>
-            <span className="text-border">·</span>
+            <span className="text-border2">·</span>
             <button
               onClick={() => setConfirmDeleteId(null)}
               className="text-xs text-muted font-cinzel hover:text-text transition-colors"
@@ -165,7 +164,7 @@ function SessionRow({
             <button
               onClick={() => onArchive(session.id, !session.archived)}
               title={session.archived ? 'Unarchive' : 'Archive'}
-              className="w-7 h-7 rounded-toolkit-sm hover:bg-surface3 transition-colors flex items-center justify-center text-muted hover:text-muted2"
+              className="w-7 h-7 rounded-toolkit-sm hover:bg-gold/10 transition-colors flex items-center justify-center text-muted hover:text-gold"
             >
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
                 {session.archived ? (
@@ -202,7 +201,7 @@ function SessionRow({
         {/* Arrow link */}
         <Link
           href={`/campaigns/${campaignId}/sessions/${session.id}`}
-          className="text-muted text-sm group-hover:text-text transition-colors ml-1"
+          className="text-muted text-sm group-hover:text-gold transition-colors ml-1"
           tabIndex={-1}
         >
           →
@@ -293,7 +292,7 @@ export default function SessionsList({
   return (
     <div>
       {saving && (
-        <div className="mb-3 text-xs text-muted font-cinzel tracking-wide text-right animate-pulse">
+        <div className="mb-3 text-xs text-gold/70 font-cinzel tracking-wide text-right animate-pulse">
           Saving order…
         </div>
       )}

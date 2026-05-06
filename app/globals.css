@@ -1,60 +1,161 @@
 @import "tailwindcss";
 
-/* ── DM Toolkit Design System (Tailwind v4 theme) ── */
+/* ── Archivist Design System — High Fantasy Edition ── */
 @theme {
-  /* Colors */
-  --color-bg:       #0a0a0f;
-  --color-surface:  #12121c;
-  --color-surface2: #1a1a2a;
-  --color-surface3: #20203a;
-  --color-border:   #2a2a40;
-  --color-border2:  #3a3a55;
-  --color-accent:   #c9872a;
-  --color-accent2:  #e8a040;
-  --color-gold:     #c9a84c;
-  --color-red:      #c94040;
-  --color-red2:     #e05555;
-  --color-purple:   #7c5ce8;
-  --color-purple2:  #9b80f0;
-  --color-green:    #3dc98a;
-  --color-green2:   #55e0a0;
-  --color-blue:     #4a90d9;
-  --color-teal:     #2abfbf;
-  --color-text:     #e8e4d8;
-  --color-muted:    #7a7a9a;
-  --color-muted2:   #9a9ab8;
+  /* ── Color Palette ── */
+  --color-bg:       #090D14;   /* Void black-navy */
+  --color-surface:  #0D1520;   /* Deep navy (solid fallback) */
+  --color-surface2: #111E2E;   /* Slightly lighter navy */
+  --color-surface3: #162338;   /* Mid navy */
+  --color-border:   #1E2D42;   /* Subtle gold-tinted border */
+  --color-border2:  #2A3D58;   /* Visible border */
 
-  /* Fonts */
-  --font-cinzel: var(--font-cinzel-var), serif;
-  --font-inter:  var(--font-inter-var), sans-serif;
-  --font-lora:   var(--font-lora-var), serif;
+  /* Gold — the primary accent */
+  --color-gold:     #B68B4C;   /* Ancient Gold */
+  --color-gold2:    #D9B36A;   /* Sunlit Amber */
 
-  /* Border radius */
+  /* Accent = Gold aliases (for backward compat with existing code) */
+  --color-accent:   #B68B4C;
+  --color-accent2:  #D9B36A;
+
+  /* Arcane Teal */
+  --color-teal:     #2E8C82;
+  --color-teal2:    #3DADA2;
+
+  /* Mystic Violet */
+  --color-purple:   #6F5FA8;
+  --color-purple2:  #8B78C8;
+
+  /* Dragon Ember */
+  --color-red:      #B6462F;
+  --color-red2:     #D4563D;
+
+  /* Forest Green */
+  --color-green:    #2E7A5A;
+  --color-green2:   #42A87A;
+
+  /* Sapphire */
+  --color-blue:     #3A6EA8;
+
+  /* Text */
+  --color-text:     #E8DFC8;   /* Aged parchment */
+  --color-muted:    #6E7A8A;   /* Faded ink */
+  --color-muted2:   #8E9AAA;   /* Lighter faded ink */
+
+  /* ── Fonts ── */
+  --font-cinzel:   var(--font-cinzel-var), serif;
+  --font-inter:    var(--font-inter-var), sans-serif;
+  --font-lora:     var(--font-lora-var), serif;
+  --font-garamond: var(--font-garamond-var), 'Cormorant Garamond', Georgia, serif;
+
+  /* ── Border radius ── */
   --radius-toolkit:    12px;
   --radius-toolkit-sm: 8px;
 }
 
-html { scroll-behavior: smooth; }
+/* ──────────────────────────────────────────────────────────────────────────
+   Base
+────────────────────────────────────────────────────────────────────────── */
+
+html {
+  background: #090D14 url('/fantasy-bg.jpg') fixed center top / cover no-repeat;
+  scroll-behavior: smooth;
+}
 
 body {
-  background-color: #0a0a0f;
-  color: #e8e4d8;
+  min-height: 100vh;
+  /* Dark veil over the fantasy background */
+  background: linear-gradient(
+    180deg,
+    rgba(9, 13, 20, 0.76) 0%,
+    rgba(9, 13, 20, 0.88) 40%,
+    rgba(9, 13, 20, 0.94) 100%
+  );
+  color: #E8DFC8;
   -webkit-font-smoothing: antialiased;
 }
 
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: #12121c; }
-::-webkit-scrollbar-thumb { background: #2a2a40; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #3a3a55; }
+::-webkit-scrollbar-track { background: rgba(9, 13, 20, 0.8); }
+::-webkit-scrollbar-thumb { background: rgba(182, 139, 76, 0.25); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(182, 139, 76, 0.45); }
 
 /* ── Selection ── */
-::selection { background: #7c5ce840; color: #e8e4d8; }
+::selection { background: rgba(182, 139, 76, 0.28); color: #E8DFC8; }
 
 /* ── Focus ring ── */
 :focus-visible {
-  outline: 2px solid #7c5ce8;
+  outline: 2px solid rgba(182, 139, 76, 0.6);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
+/* ──────────────────────────────────────────────────────────────────────────
+   Glassmorphism Utilities
+────────────────────────────────────────────────────────────────────────── */
+
+/* Navigation bar — darkest glass */
+.glass-nav {
+  background: rgba(9, 13, 20, 0.84);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(182, 139, 76, 0.20);
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Panel — form containers, content boxes */
+.glass-panel {
+  background: rgba(11, 17, 27, 0.90);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(182, 139, 76, 0.18);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(182, 139, 76, 0.07);
+}
+
+/* Card — list items, campaign cards, chronicle entries */
+.glass-card {
+  background: rgba(11, 17, 27, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(182, 139, 76, 0.13);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.40);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.glass-card:hover {
+  background: rgba(13, 21, 34, 0.88);
+  border-color: rgba(182, 139, 76, 0.28);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(182, 139, 76, 0.10);
+}
+
+/* Input — form fields */
+.glass-input {
+  background: rgba(9, 13, 20, 0.65);
+  border: 1px solid rgba(182, 139, 76, 0.15);
+  color: #E8DFC8;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.glass-input::placeholder { color: #6E7A8A; }
+
+.glass-input:focus {
+  outline: none;
+  border-color: rgba(182, 139, 76, 0.45);
+  box-shadow: 0 0 0 2px rgba(182, 139, 76, 0.12);
+}
+
+/* ── Gold gradient button ── */
+.btn-gold {
+  background: linear-gradient(135deg, #B68B4C 0%, #D9B36A 50%, #B68B4C 100%);
+  background-size: 200% 100%;
+  color: #090D14;
+  font-weight: 700;
+  transition: background-position 0.3s ease, opacity 0.2s ease;
+}
+
+.btn-gold:hover {
+  background-position: 100% 0;
+}

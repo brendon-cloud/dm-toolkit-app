@@ -96,11 +96,11 @@ export default function NewSessionPage({ params }: { params: Promise<{ id: strin
   const isLoading = status === 'saving' || status === 'processing'
 
   return (
-    <div className="min-h-screen bg-bg">
-      <header className="bg-surface border-b border-border sticky top-0 z-50">
+    <div className="min-h-screen">
+      <header className="glass-nav sticky top-0 z-50">
         <div className="max-w-3xl mx-auto px-6 h-14 flex items-center gap-4">
           <Link href={`/campaigns/${campaignId}`} className="text-muted hover:text-text transition-colors text-sm">← Back to campaign</Link>
-          <span className="text-border">|</span>
+          <span className="text-border2">|</span>
           <span className="font-cinzel text-gold font-bold text-sm tracking-wide">New Session</span>
         </div>
       </header>
@@ -108,18 +108,18 @@ export default function NewSessionPage({ params }: { params: Promise<{ id: strin
       <main className="max-w-3xl mx-auto px-6 py-12">
         <div className="mb-8">
           <h1 className="font-cinzel text-3xl font-bold text-text mb-2">Chronicle a Session</h1>
-          <p className="text-muted leading-relaxed">
-            Upload the <strong className="text-text">.srt transcript</strong> from your session recording.
-            Archivist will parse the transcript and generate a full structured chronicle.
+          <p className="text-muted leading-relaxed font-lora">
+            Upload the <strong className="text-text">transcript</strong> from your session recording.
+            Archivist will parse it and generate a full structured chronicle.
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-          <div className="bg-surface border border-border rounded-toolkit p-6 flex flex-col gap-5">
+          <div className="glass-panel rounded-toolkit p-6 flex flex-col gap-5">
 
             <div className="grid grid-cols-2 gap-4">
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-semibold text-muted2 uppercase tracking-wider">
+                <label className="text-xs font-semibold text-muted2 uppercase tracking-wider font-cinzel">
                   Session # <span className="text-muted normal-case font-normal">(auto if blank)</span>
                 </label>
                 <input
@@ -128,23 +128,23 @@ export default function NewSessionPage({ params }: { params: Promise<{ id: strin
                   onChange={e => setSessionNumber(e.target.value)}
                   placeholder="e.g. 12"
                   min={1}
-                  className="bg-surface2 border border-border rounded-toolkit-sm px-3 py-2.5 text-sm text-text placeholder:text-muted focus:outline-none focus:border-purple focus:ring-2 focus:ring-purple/20 transition-all"
+                  className="glass-input rounded-toolkit-sm px-3 py-2.5 text-sm"
                 />
               </div>
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-semibold text-muted2 uppercase tracking-wider">Session Date</label>
+                <label className="text-xs font-semibold text-muted2 uppercase tracking-wider font-cinzel">Session Date</label>
                 <input
                   type="date"
                   value={sessionDate}
                   onChange={e => setSessionDate(e.target.value)}
-                  className="bg-surface2 border border-border rounded-toolkit-sm px-3 py-2.5 text-sm text-text focus:outline-none focus:border-purple focus:ring-2 focus:ring-purple/20 transition-all"
+                  className="glass-input rounded-toolkit-sm px-3 py-2.5 text-sm"
                 />
               </div>
             </div>
 
             {/* SRT upload */}
             <div className="flex flex-col gap-2">
-              <label className="text-xs font-semibold text-muted2 uppercase tracking-wider">Session Transcript (.srt) *</label>
+              <label className="text-xs font-semibold text-muted2 uppercase tracking-wider font-cinzel">Session Transcript (.srt) *</label>
 
               <input
                 ref={fileInputRef}
@@ -160,8 +160,8 @@ export default function NewSessionPage({ params }: { params: Promise<{ id: strin
                 className={`
                   w-full border-2 border-dashed rounded-toolkit p-8 text-center transition-all
                   ${srtFile
-                    ? 'border-purple/50 bg-purple/5'
-                    : 'border-border hover:border-border2 hover:bg-surface2'
+                    ? 'border-gold/50 bg-gold/5'
+                    : 'border-border2 hover:border-gold/30 hover:bg-gold/5'
                   }
                 `}
               >
@@ -175,7 +175,7 @@ export default function NewSessionPage({ params }: { params: Promise<{ id: strin
                   <div className="flex flex-col items-center gap-2">
                     <div className="text-3xl opacity-40">🎙️</div>
                     <p className="font-cinzel font-semibold text-muted text-sm">Click to upload your .srt file</p>
-                    <p className="text-xs text-muted">Generated by your transcription software</p>
+                    <p className="text-xs text-muted font-lora">Generated by your transcription software</p>
                   </div>
                 )}
               </button>
@@ -184,19 +184,19 @@ export default function NewSessionPage({ params }: { params: Promise<{ id: strin
           </div>
 
           {error && (
-            <div className="bg-red/10 border border-red/30 rounded-toolkit-sm px-4 py-3 text-red2 text-sm">
+            <div className="bg-red/10 border border-red/30 rounded-toolkit-sm px-4 py-3 text-red2 text-sm font-lora">
               {error}
             </div>
           )}
 
           {isLoading && (
-            <div className="bg-purple/10 border border-purple/30 rounded-toolkit p-4 flex items-center gap-4">
-              <div className="w-8 h-8 rounded-full border-2 border-purple border-t-transparent animate-spin shrink-0" />
+            <div className="glass-panel rounded-toolkit p-4 flex items-center gap-4">
+              <div className="w-8 h-8 rounded-full border-2 border-gold border-t-transparent animate-spin shrink-0" />
               <div>
-                <p className="font-cinzel text-sm font-bold text-purple2">
+                <p className="font-cinzel text-sm font-bold text-gold">
                   {status === 'saving' ? 'Saving your transcript…' : 'Archivist is reading the transcript…'}
                 </p>
-                <p className="text-xs text-muted mt-0.5">
+                <p className="text-xs text-muted mt-0.5 font-lora">
                   {status === 'processing' ? 'This usually takes 15–30 seconds.' : ''}
                 </p>
               </div>

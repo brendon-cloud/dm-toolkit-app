@@ -29,7 +29,7 @@ const npcStatusStyle: Record<string, { badge: string; border: string; dot: strin
     dot:    'bg-green',
   },
   neutral: {
-    badge:  'text-muted2 bg-surface3 border-border2',
+    badge:  'text-muted2 bg-surface3/60 border-border2',
     border: 'border-l-border2',
     dot:    'bg-muted',
   },
@@ -39,14 +39,14 @@ const npcStatusStyle: Record<string, { badge: string; border: string; dot: strin
     dot:    'bg-red2',
   },
   unknown: {
-    badge:  'text-muted2 bg-surface3 border-border',
+    badge:  'text-muted2 bg-surface3/60 border-border',
     border: 'border-l-border',
     dot:    'bg-muted2',
   },
 }
 
 const questStatusStyle: Record<string, { badge: string; border: string }> = {
-  new:       { badge: 'text-accent2 bg-accent/10 border-accent/30',  border: 'border-l-accent2' },
+  new:       { badge: 'text-gold bg-gold/10 border-gold/30',         border: 'border-l-gold2' },
   active:    { badge: 'text-gold bg-gold/10 border-gold/30',          border: 'border-l-gold' },
   completed: { badge: 'text-green2 bg-green/10 border-green/30',      border: 'border-l-green' },
   failed:    { badge: 'text-red2 bg-red/10 border-red/30',            border: 'border-l-red' },
@@ -56,8 +56,8 @@ const encounterTypeStyle: Record<string, string> = {
   combat:      'text-red2 bg-red/10 border-red/20',
   social:      'text-blue bg-blue/10 border-blue/20',
   exploration: 'text-teal bg-teal/10 border-teal/20',
-  trap:        'text-accent2 bg-accent/10 border-accent/20',
-  puzzle:      'text-gold bg-gold/10 border-gold/20',
+  trap:        'text-gold bg-gold/10 border-gold/20',
+  puzzle:      'text-purple2 bg-purple/10 border-purple/20',
 }
 
 const encounterTypeIcon: Record<string, string> = {
@@ -107,7 +107,7 @@ export default function ChronicleView({ chronicle }: { chronicle: ChronicleData 
     <div>
       {/* Truncation warning */}
       {chronicle._truncated && (
-        <div className="mb-5 bg-accent/5 border border-accent/20 rounded-toolkit px-4 py-3 text-sm text-accent2 flex items-start gap-2.5">
+        <div className="mb-5 bg-gold/5 border border-gold/20 rounded-toolkit px-4 py-3 text-sm text-gold flex items-start gap-2.5">
           <span className="shrink-0 mt-0.5 text-base">⚠️</span>
           <span className="font-lora">
             This session&apos;s transcript was very long — Archivist analyzed the first portion.
@@ -146,15 +146,15 @@ export default function ChronicleView({ chronicle }: { chronicle: ChronicleData 
               <div className="h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent mb-1" />
               <div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent mb-6" />
 
-              <div className="bg-surface border border-border/60 rounded-toolkit p-8 relative overflow-hidden">
-                {/* Subtle corner ornaments */}
-                <div className="absolute top-3 left-3 w-4 h-4 border-l border-t border-gold/20" />
-                <div className="absolute top-3 right-3 w-4 h-4 border-r border-t border-gold/20" />
-                <div className="absolute bottom-3 left-3 w-4 h-4 border-l border-b border-gold/20" />
-                <div className="absolute bottom-3 right-3 w-4 h-4 border-r border-b border-gold/20" />
+              <div className="glass-panel rounded-toolkit p-8 relative overflow-hidden">
+                {/* Corner ornaments */}
+                <div className="absolute top-3 left-3 w-4 h-4 border-l border-t border-gold/25" />
+                <div className="absolute top-3 right-3 w-4 h-4 border-r border-t border-gold/25" />
+                <div className="absolute bottom-3 left-3 w-4 h-4 border-l border-b border-gold/25" />
+                <div className="absolute bottom-3 right-3 w-4 h-4 border-r border-b border-gold/25" />
 
                 <div className="text-center mb-6">
-                  <span className="text-gold/40 text-2xl tracking-widest">✦  ✦  ✦</span>
+                  <span className="text-gold/35 text-2xl tracking-widest">✦  ✦  ✦</span>
                 </div>
 
                 <div className="max-w-2xl mx-auto">
@@ -169,7 +169,7 @@ export default function ChronicleView({ chronicle }: { chronicle: ChronicleData 
                 </div>
 
                 <div className="text-center mt-6">
-                  <span className="text-gold/40 text-2xl tracking-widest">✦  ✦  ✦</span>
+                  <span className="text-gold/35 text-2xl tracking-widest">✦  ✦  ✦</span>
                 </div>
               </div>
 
@@ -193,7 +193,7 @@ export default function ChronicleView({ chronicle }: { chronicle: ChronicleData 
                 return (
                   <div
                     key={i}
-                    className={`bg-surface border border-border rounded-toolkit p-5 border-l-4 ${style.border} hover:bg-surface2 transition-colors`}
+                    className={`glass-card rounded-toolkit p-5 border-l-4 ${style.border}`}
                   >
                     <div className="flex items-start justify-between gap-3 mb-2">
                       <div className="flex items-center gap-2">
@@ -229,7 +229,7 @@ export default function ChronicleView({ chronicle }: { chronicle: ChronicleData 
                 return (
                   <div
                     key={i}
-                    className={`bg-surface border border-border rounded-toolkit p-5 border-l-4 ${style.border} hover:bg-surface2 transition-colors`}
+                    className={`glass-card rounded-toolkit p-5 border-l-4 ${style.border}`}
                   >
                     <div className="flex items-start justify-between gap-3 mb-3">
                       <h3 className="font-cinzel font-bold text-text text-base">{quest.name}</h3>
@@ -266,12 +266,12 @@ export default function ChronicleView({ chronicle }: { chronicle: ChronicleData 
           {chronicle.encounters && chronicle.encounters.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {chronicle.encounters.map((enc, i) => {
-                const typeStyle = encounterTypeStyle[enc.type] ?? 'text-muted2 bg-surface3 border-border'
+                const typeStyle = encounterTypeStyle[enc.type] ?? 'text-muted2 bg-surface3/60 border-border'
                 const typeIcon = encounterTypeIcon[enc.type] ?? '🎲'
                 return (
                   <div
                     key={i}
-                    className="bg-surface border border-border rounded-toolkit p-5 hover:bg-surface2 transition-colors"
+                    className="glass-card rounded-toolkit p-5"
                   >
                     <div className="flex items-start justify-between gap-3 mb-3">
                       <h3 className="font-cinzel font-bold text-text">{enc.name}</h3>
@@ -281,7 +281,7 @@ export default function ChronicleView({ chronicle }: { chronicle: ChronicleData 
                     </div>
                     <div className="mb-3 flex items-center gap-2">
                       <div className="w-1 h-1 rounded-full bg-green" />
-                      <p className="text-green text-xs font-cinzel tracking-wide font-bold uppercase">{enc.outcome}</p>
+                      <p className="text-green2 text-xs font-cinzel tracking-wide font-bold uppercase">{enc.outcome}</p>
                     </div>
                     {enc.notes && (
                       <p className="text-muted2 text-sm leading-relaxed font-lora">{enc.notes}</p>
@@ -308,7 +308,7 @@ export default function ChronicleView({ chronicle }: { chronicle: ChronicleData 
                 {chronicle.locations.map((loc, i) => (
                   <div
                     key={i}
-                    className="bg-surface border border-border rounded-toolkit p-5 border-l-4 border-l-teal hover:bg-surface2 transition-colors"
+                    className="glass-card rounded-toolkit p-5 border-l-4 border-l-teal"
                   >
                     <h3 className="font-cinzel font-bold text-text mb-2">{loc.name}</h3>
                     <p className="text-muted2 text-sm leading-relaxed font-lora">{loc.description}</p>
@@ -328,7 +328,7 @@ export default function ChronicleView({ chronicle }: { chronicle: ChronicleData 
                 {chronicle.loot.map((item, i) => (
                   <div
                     key={i}
-                    className="bg-surface border border-border rounded-toolkit p-5 border-l-4 border-l-gold hover:bg-surface2 transition-colors"
+                    className="glass-card rounded-toolkit p-5 border-l-4 border-l-gold"
                   >
                     <h3 className="font-cinzel font-bold text-text mb-1">{item.name}</h3>
                     <p className="text-muted2 text-sm leading-relaxed font-lora mb-2">{item.description}</p>
@@ -349,7 +349,7 @@ export default function ChronicleView({ chronicle }: { chronicle: ChronicleData 
               {chronicle.mysteries && chronicle.mysteries.length > 0 && (
                 <div>
                   <SectionHeading icon="🔮" label="Open Mysteries" />
-                  <div className="bg-surface border border-border/60 rounded-toolkit overflow-hidden">
+                  <div className="glass-card rounded-toolkit overflow-hidden">
                     {chronicle.mysteries.map((m, i) => (
                       <div
                         key={i}
@@ -366,7 +366,7 @@ export default function ChronicleView({ chronicle }: { chronicle: ChronicleData 
               {chronicle.hooks && chronicle.hooks.length > 0 && (
                 <div>
                   <SectionHeading icon="🪝" label="Next Session Hooks" />
-                  <div className="bg-surface border border-border/60 rounded-toolkit overflow-hidden">
+                  <div className="glass-card rounded-toolkit overflow-hidden">
                     {chronicle.hooks.map((h, i) => (
                       <div
                         key={i}

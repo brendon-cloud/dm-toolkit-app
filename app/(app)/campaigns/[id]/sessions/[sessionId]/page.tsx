@@ -30,10 +30,10 @@ export default async function SessionPage({
     : null
 
   return (
-    <div className="min-h-screen bg-bg">
+    <div className="min-h-screen">
 
       {/* ── Sticky nav ── */}
-      <header className="bg-surface/95 backdrop-blur border-b border-border sticky top-0 z-50">
+      <header className="glass-nav sticky top-0 z-50">
         <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
           <Link
             href={`/campaigns/${campaignId}`}
@@ -52,9 +52,9 @@ export default async function SessionPage({
       <div className="relative overflow-hidden border-b border-border">
         {/* Ambient glow behind title */}
         <div
-          className="absolute inset-0 opacity-20 pointer-events-none"
+          className="absolute inset-0 opacity-25 pointer-events-none"
           style={{
-            background: `radial-gradient(ellipse 80% 100% at 50% 0%, ${campaign.cover_color}33, transparent 70%)`,
+            background: `radial-gradient(ellipse 80% 100% at 50% 0%, ${campaign.cover_color}44, transparent 70%)`,
           }}
         />
 
@@ -95,16 +95,16 @@ export default async function SessionPage({
 
         {/* Processing state */}
         {session.status === 'processing' && (
-          <div className="bg-purple/10 border border-purple/30 rounded-toolkit p-10 text-center">
-            <div className="w-10 h-10 rounded-full border-2 border-purple border-t-transparent animate-spin mx-auto mb-5" />
-            <p className="font-cinzel text-purple2 font-bold text-lg mb-1">Archivist is chronicling this session…</p>
+          <div className="glass-panel rounded-toolkit p-10 text-center">
+            <div className="w-10 h-10 rounded-full border-2 border-gold border-t-transparent animate-spin mx-auto mb-5" />
+            <p className="font-cinzel text-gold font-bold text-lg mb-1">Archivist is chronicling this session…</p>
             <p className="text-muted text-sm font-lora">Refresh the page in a moment to see your chronicle.</p>
           </div>
         )}
 
         {/* Failed state */}
         {session.status === 'failed' && (
-          <div className="bg-red/10 border border-red/30 rounded-toolkit p-10 text-center">
+          <div className="glass-panel rounded-toolkit p-10 text-center border border-red/20">
             <p className="font-cinzel text-red2 font-bold text-lg mb-2">Chronicle processing failed</p>
             <p className="text-muted text-sm font-lora">There was an error generating this chronicle. Please try creating the session again.</p>
           </div>
@@ -121,7 +121,7 @@ export default async function SessionPage({
               <span className="font-cinzel text-xs tracking-widest uppercase shrink-0">View Raw Transcript</span>
               <div className="flex-1 h-px bg-border" />
             </summary>
-            <div className="mt-4 bg-surface border border-border rounded-toolkit p-6">
+            <div className="mt-4 glass-panel rounded-toolkit p-6">
               <pre className="text-xs text-muted leading-relaxed whitespace-pre-wrap font-mono">
                 {session.raw_notes}
               </pre>

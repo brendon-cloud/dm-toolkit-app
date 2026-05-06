@@ -6,12 +6,12 @@ import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 
 const COLORS = [
-  '#c9a84c', // gold
-  '#7c5ce8', // purple
-  '#e85c7c', // rose
-  '#5ce8a8', // emerald
-  '#5ca8e8', // blue
-  '#e8925c', // orange
+  '#B68B4C', // Ancient Gold
+  '#6F5FA8', // Mystic Violet
+  '#2E8C82', // Arcane Teal
+  '#B6462F', // Dragon Ember
+  '#3A6EA8', // Sapphire Blue
+  '#42A87A', // Forest Green
 ]
 
 const SYSTEMS = [
@@ -63,11 +63,11 @@ export default function NewCampaignPage() {
   }
 
   return (
-    <div className="min-h-screen bg-bg">
-      <header className="bg-surface border-b border-border sticky top-0 z-50">
+    <div className="min-h-screen">
+      <header className="glass-nav sticky top-0 z-50">
         <div className="max-w-3xl mx-auto px-6 h-14 flex items-center gap-4">
           <Link href="/dashboard" className="text-muted hover:text-text transition-colors text-sm">← Back</Link>
-          <span className="text-border">|</span>
+          <span className="text-border2">|</span>
           <span className="font-cinzel text-gold font-bold text-sm tracking-wide">New Campaign</span>
         </div>
       </header>
@@ -75,40 +75,40 @@ export default function NewCampaignPage() {
       <main className="max-w-3xl mx-auto px-6 py-12">
         <div className="mb-8">
           <h1 className="font-cinzel text-3xl font-bold text-text mb-2">Begin a New Campaign</h1>
-          <p className="text-muted">Give your adventure a name and some context. You can always edit this later.</p>
+          <p className="text-muted font-lora">Give your adventure a name and some context. You can always edit this later.</p>
         </div>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-          <div className="bg-surface border border-border rounded-toolkit p-6 flex flex-col gap-5">
+          <div className="glass-panel rounded-toolkit p-6 flex flex-col gap-5">
 
             {/* Campaign name */}
             <div className="flex flex-col gap-1.5">
-              <label className="text-xs font-semibold text-muted2 uppercase tracking-wider">Campaign Name *</label>
+              <label className="text-xs font-semibold text-muted2 uppercase tracking-wider font-cinzel">Campaign Name *</label>
               <input
                 type="text"
                 value={name}
                 onChange={e => setName(e.target.value)}
-                placeholder="e.g. Curse of Strahd, The Lost Coast..."
+                placeholder="e.g. Curse of Strahd, The Lost Coast…"
                 required
-                className="bg-surface2 border border-border rounded-toolkit-sm px-3 py-2.5 text-sm text-text placeholder:text-muted focus:outline-none focus:border-purple focus:ring-2 focus:ring-purple/20 transition-all"
+                className="glass-input rounded-toolkit-sm px-3 py-2.5 text-sm"
               />
             </div>
 
             {/* System */}
             <div className="flex flex-col gap-1.5">
-              <label className="text-xs font-semibold text-muted2 uppercase tracking-wider">Game System</label>
+              <label className="text-xs font-semibold text-muted2 uppercase tracking-wider font-cinzel">Game System</label>
               <select
                 value={system}
                 onChange={e => setSystem(e.target.value)}
-                className="bg-surface2 border border-border rounded-toolkit-sm px-3 py-2.5 text-sm text-text focus:outline-none focus:border-purple focus:ring-2 focus:ring-purple/20 transition-all"
+                className="glass-input rounded-toolkit-sm px-3 py-2.5 text-sm"
               >
-                {SYSTEMS.map(s => <option key={s} value={s}>{s}</option>)}
+                {SYSTEMS.map(s => <option key={s} value={s} className="bg-surface text-text">{s}</option>)}
               </select>
             </div>
 
             {/* Setting */}
             <div className="flex flex-col gap-1.5">
-              <label className="text-xs font-semibold text-muted2 uppercase tracking-wider">
+              <label className="text-xs font-semibold text-muted2 uppercase tracking-wider font-cinzel">
                 World / Setting <span className="text-muted normal-case font-normal">(optional)</span>
               </label>
               <textarea
@@ -116,13 +116,13 @@ export default function NewCampaignPage() {
                 onChange={e => setSetting(e.target.value)}
                 placeholder="Brief description of your campaign's world or setting. This helps the AI understand the context when generating chronicles."
                 rows={3}
-                className="bg-surface2 border border-border rounded-toolkit-sm px-3 py-2.5 text-sm text-text placeholder:text-muted focus:outline-none focus:border-purple focus:ring-2 focus:ring-purple/20 transition-all resize-none"
+                className="glass-input rounded-toolkit-sm px-3 py-2.5 text-sm resize-none"
               />
             </div>
 
             {/* Color */}
             <div className="flex flex-col gap-2">
-              <label className="text-xs font-semibold text-muted2 uppercase tracking-wider">Campaign Color</label>
+              <label className="text-xs font-semibold text-muted2 uppercase tracking-wider font-cinzel">Campaign Color</label>
               <div className="flex gap-3">
                 {COLORS.map(c => (
                   <button
@@ -134,6 +134,7 @@ export default function NewCampaignPage() {
                       background: c,
                       outline: color === c ? `3px solid ${c}` : 'none',
                       outlineOffset: '2px',
+                      boxShadow: color === c ? `0 0 12px ${c}66` : 'none',
                     }}
                   />
                 ))}

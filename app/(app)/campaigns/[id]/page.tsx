@@ -25,16 +25,16 @@ export default async function CampaignPage({ params }: { params: Promise<{ id: s
     .order('display_order', { ascending: true, nullsFirst: false })
 
   return (
-    <div className="min-h-screen bg-bg">
+    <div className="min-h-screen">
 
       {/* ── Nav ── */}
-      <header className="bg-surface/95 backdrop-blur border-b border-border sticky top-0 z-50">
+      <header className="glass-nav sticky top-0 z-50">
         <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Link href="/dashboard" className="text-muted hover:text-text transition-colors text-sm">
               ← Campaigns
             </Link>
-            <span className="text-border">|</span>
+            <span className="text-border2">|</span>
             <div className="flex items-center gap-2">
               <div
                 className="w-4 h-4 rounded-full shrink-0"

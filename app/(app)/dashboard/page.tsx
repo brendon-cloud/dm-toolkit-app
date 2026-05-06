@@ -18,9 +18,9 @@ export default async function DashboardPage() {
     .order('created_at', { ascending: false })
 
   return (
-    <div className="min-h-screen bg-bg">
+    <div className="min-h-screen">
       {/* Header */}
-      <header className="bg-surface border-b border-border sticky top-0 z-50 backdrop-blur-sm">
+      <header className="glass-nav sticky top-0 z-50">
         <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <span className="text-xl">📜</span>
@@ -53,11 +53,11 @@ export default async function DashboardPage() {
         {/* Empty state */}
         {(!campaigns || campaigns.length === 0) && (
           <div className="flex flex-col items-center justify-center py-24 text-center">
-            <div className="w-20 h-20 rounded-full bg-surface border border-border flex items-center justify-center text-4xl mb-5 opacity-50">
+            <div className="w-20 h-20 rounded-full glass-card flex items-center justify-center text-4xl mb-5 opacity-70">
               🗺️
             </div>
             <h2 className="font-cinzel text-lg font-semibold text-muted mb-2">No campaigns yet</h2>
-            <p className="text-muted text-sm max-w-xs leading-relaxed mb-6">
+            <p className="text-muted text-sm max-w-xs leading-relaxed mb-6 font-lora">
               Every great adventure starts somewhere. Create your first campaign to begin building your chronicle.
             </p>
             <Link
@@ -76,11 +76,11 @@ export default async function DashboardPage() {
               <Link
                 key={campaign.id}
                 href={`/campaigns/${campaign.id}`}
-                className="group bg-surface border border-border rounded-toolkit p-5 hover:border-border2 hover:bg-surface2 transition-all"
+                className="group glass-card rounded-toolkit p-5"
               >
                 <div
                   className="w-10 h-10 rounded-toolkit-sm flex items-center justify-center text-xl mb-4"
-                  style={{ background: campaign.cover_color + '22', border: `1px solid ${campaign.cover_color}44` }}
+                  style={{ background: campaign.cover_color + '22', border: `1px solid ${campaign.cover_color}55` }}
                 >
                   📖
                 </div>
@@ -88,10 +88,10 @@ export default async function DashboardPage() {
                   {campaign.name}
                 </h3>
                 {campaign.setting && (
-                  <p className="text-muted text-xs line-clamp-2">{campaign.setting}</p>
+                  <p className="text-muted text-xs line-clamp-2 font-lora">{campaign.setting}</p>
                 )}
-                <div className="mt-3 flex items-center gap-1 text-muted text-xs">
-                  <span>View chronicle →</span>
+                <div className="mt-3 flex items-center gap-1 text-muted text-xs font-cinzel tracking-wide">
+                  <span className="group-hover:text-gold transition-colors">View chronicle →</span>
                 </div>
               </Link>
             ))}

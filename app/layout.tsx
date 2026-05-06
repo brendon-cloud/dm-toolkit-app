@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Cinzel, Inter, Lora } from 'next/font/google'
+import { Cinzel, Inter, Lora, Cormorant_Garamond } from 'next/font/google'
 import './globals.css'
 
 const inter = Inter({
@@ -22,6 +22,14 @@ const lora = Lora({
   display: 'swap',
 })
 
+const garamond = Cormorant_Garamond({
+  subsets: ['latin'],
+  variable: '--font-garamond-var',
+  weight: ['300', '400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
   title: 'Archivist — The DM Toolkit',
   description: 'AI-powered session chronicle tool for Dungeon Masters. Transform raw session notes into beautifully organized campaign records.',
@@ -39,8 +47,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${cinzel.variable} ${lora.variable}`}>
-      <body className="bg-bg text-text antialiased font-inter">
+    <html lang="en" className={`${inter.variable} ${cinzel.variable} ${lora.variable} ${garamond.variable}`}>
+      <body className="text-text antialiased font-inter">
         {children}
       </body>
     </html>
